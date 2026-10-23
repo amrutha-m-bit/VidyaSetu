@@ -1,0 +1,8 @@
+{
+  "name": "Remix VidyaSetu - Rural Government School Learning Platform",
+  "description": "Multilingual, offline-first digital learning platform for Classes 1–8 in rural Indian government schools with interactive lessons, quizzes, educational games, and supervised content management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sunGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F2B84B" />
+      <stop offset="100%" stop-color="#FFA826" />
+    </linearGradient>
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#176B55" />
+      <stop offset="100%" stop-color="#0f4839" />
+    </linearGradient>
+    <linearGradient id="sproutGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#28a745" />
+      <stop offset="100%" stop-color="#80e068" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <rect width="512" height="512" rx="100" fill="#FBFAF6"/>
+  <circle cx="256" cy="256" r="236" fill="#E6F4ED" opacity="0.6" />
+  
+  <!-- Rising Sun of Knowledge -->
+  <circle cx="256" cy="210" r="75" fill="url(#sunGrad)"/>
+  
+  <!-- Sun Rays -->
+  <g stroke="#F2B84B" stroke-width="6" stroke-linecap="round" opacity="0.8">
+    <line x1="256" y1="110" x2="256" y2="90" />
+    <line x1="185" y1="140" x2="170" y2="125" />
+    <line x1="327" y1="140" x2="342" y2="125" />
+    <line x1="145" y1="210" x2="125" y2="210" />
+    <line x1="367" y1="210" x2="387" y2="210" />
+  </g>
+
+  <!-- Open Book as a Stepping Bridge -->
+  <!-- Left Page / Arch -->
+  <path d="M 120 330 C 180 270, 240 280, 256 295 C 240 370, 180 370, 120 330 Z" fill="#20876c" />
+  <!-- Right Page / Arch -->
+  <path d="M 392 330 C 332 270, 272 280, 256 295 C 272 370, 332 370, 392 330 Z" fill="url(#bridgeGrad)" />
+  
+  <!-- Bridge Arch Structure Underneath -->
+  <path d="M 140 340 Q 256 250 372 340 C 330 380, 182 380, 140 340 Z" fill="#176B55" opacity="0.9" />
+  
+  <!-- River of Wisdom below -->
+  <path d="M 160 385 C 210 375, 302 375, 352 385 C 310 405, 202 405, 160 385 Z" fill="#4ea5d9" opacity="0.6"/>
+
+  <!-- Golden Sprout emerging at the center -->
+  <path d="M 256 280 Q 256 220 256 195" stroke="#F2B84B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Leaves -->
+  <path d="M 256 230 C 235 220, 230 195, 245 190 C 255 205, 256 225, 256 230 Z" fill="#48bb78" />
+  <path d="M 256 220 C 277 210, 282 185, 267 180 C 257 195, 256 215, 256 220 Z" fill="#38a169" />
+</svg>

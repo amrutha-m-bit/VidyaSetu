@@ -1,0 +1,670 @@
+# MASTER DEVELOPMENT PROMPT — VIDYASETU
+
+## 1. Project Overview
+
+Build a complete, modern, responsive, production-oriented web application named **VidyaSetu**.
+
+**Project title:** VidyaSetu — Multilingual Digital Learning Platform for Rural Government Schools
+
+**Tagline:** “Bridging Villages Through Learning.”
+
+**Core mission:** Design and develop an accessible digital learning platform that provides interactive, activity-based educational content in multiple Indian regional languages for students in Classes 1–8 studying in rural and small-village government schools.
+
+The platform must work on low-cost smartphones, tablets, laptops, and shared classroom computers. It must support offline learning because many rural schools have unreliable internet connectivity.
+
+IMPORTANT: Do not create only a static landing page, a design mockup, or a frontend with nonfunctional buttons. Build a complete full-stack application with a working frontend, secure backend, supervised content management, database, authentication, real learning interactions, and offline capabilities.
+
+Develop the application directly inside the current project workspace. Create all required files, implement the features, configure the architecture, run the application, and test the core workflows.
+
+## 2. Technology Stack
+
+Use the following technologies wherever compatible with the existing project:
+
+### Frontend
+- HTML5
+- CSS3 with custom design tokens
+- JavaScript ES modules
+- Vite for development and production builds
+- Responsive, mobile-first design
+- Progressive Web App (PWA) capabilities
+
+Use beginner-friendly, modular JavaScript. Prefer semantic HTML, reusable UI components, and separate modules rather than one enormous JavaScript file.
+
+Do not introduce React, Next.js, or another complex framework unless the existing project requires it or there is a clear technical reason.
+
+### Backend
+Use Supabase for:
+- PostgreSQL database
+- Authentication
+- Secure session management
+- Database access through the Supabase client
+- Row Level Security (RLS)
+- Storage for lesson images, audio, and downloadable resources
+- Optional Edge Functions for privileged server-side operations
+
+All privileged operations must run on the server, never in browser code.
+
+### Offline capabilities
+- Service Worker for application-shell caching
+- IndexedDB for downloaded lessons, quiz attempts, and pending updates
+- A synchronization queue for safely uploading pending results when connectivity returns
+- Clear online, offline, syncing, and synchronization-error indicators
+
+### Development tools
+- Git-ready project structure
+- Environment variables for configuration
+- ESLint or equivalent JavaScript linting
+- Automated tests for important functionality
+- A README with setup, database configuration, testing, and deployment instructions
+
+If Supabase credentials are not available, create a clearly separated development mode with local sample content. Never pretend that a database connection or authentication operation succeeded when it did not.
+
+## 3. Visual Identity and UI/UX
+
+Create a beautiful, distinctive educational technology website that feels trustworthy, welcoming, innovative, and specifically designed for Indian government primary schools.
+
+### Brand identity
+- Brand name: VidyaSetu
+- Tagline: Bridging Villages Through Learning
+- Logo concept: An open book forming a bridge, with a rising sun or small sprout symbolizing knowledge, opportunity, and growth.
+- Primary color: Deep forest green (#176B55)
+- Secondary color: Soft mint green (#E6F4ED)
+- Accent color: Warm saffron (#F2B84B)
+- Background: Warm off-white (#FBFAF6)
+- Text: Dark green-gray (#20332E)
+
+Use these colors consistently through CSS variables.
+
+### Design direction
+Create a polished, premium-looking interface inspired by modern education platforms, with:
+- Generous whitespace and clear visual hierarchy
+- Rounded cards and subtle shadows
+- Beautiful illustrations and educational icons
+- Smooth, restrained animations
+- Friendly typography with strong readability
+- Large, accessible touch targets
+- Progress bars, achievement badges, and visual feedback
+- Consistent buttons, form fields, modals, alerts, and navigation
+- Thoughtful empty states, loading states, and error messages
+- Responsive desktop sidebar and mobile navigation
+- Light theme by default, with optional dark mode if practical
+
+Use a consistent icon library such as Lucide. Use original SVG illustrations or properly licensed assets instead of random images.
+
+Avoid generic dashboard templates, excessive gradients, overcrowded screens, tiny text, excessive animations, and childish design that would look unprofessional to teachers or administrators.
+
+The interface should feel playful for children and professional for educators.
+
+## 4. Application Architecture
+
+Implement a modular architecture with clear separation between presentation, business logic, data access, and offline storage.
+
+Suggested project structure:
+
+vidyasetu/
+├── public/
+│   ├── icons/
+│   ├── illustrations/
+│   ├── manifest.json
+│   └── service-worker.js
+├── src/
+│   ├── index.html
+│   ├── styles/
+│   │   ├── tokens.css
+│   │   ├── global.css
+│   │   ├── components.css
+│   │   └── responsive.css
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── router.js
+│   │   ├── config/
+│   │   │   └── supabase.js
+│   │   ├── services/
+│   │   │   ├── auth.service.js
+│   │   │   ├── lesson.service.js
+│   │   │   ├── quiz.service.js
+│   │   │   ├── progress.service.js
+│   │   │   └── assignment.service.js
+│   │   ├── repositories/
+│   │   │   ├── lesson.repository.js
+│   │   │   └── progress.repository.js
+│   │   ├── offline/
+│   │   │   ├── database.js
+│   │   │   ├── cache-manager.js
+│   │   │   └── sync-manager.js
+│   │   ├── components/
+│   │   ├── pages/
+│   │   │   ├── home.js
+│   │   │   ├── student-dashboard.js
+│   │   │   ├── lesson-player.js
+│   │   │   ├── games.js
+│   │   │   ├── teacher-dashboard.js
+│   │   │   ├── admin-dashboard.js
+│   │   │   └── content-management.js
+│   │   └── utils/
+│   └── tests/
+├── supabase/
+│   ├── migrations/
+│   ├── seed.sql
+│   └── functions/
+├── .env.example
+├── .gitignore
+├── package.json
+└── README.md
+
+Adapt this structure when necessary, but maintain modularity and clear responsibilities.
+
+Do not place all frontend logic in a single file. Keep database queries out of presentation components wherever practical.
+
+## 5. Public Website and Landing Page
+
+Create a highly polished homepage with:
+
+### Navigation
+- VidyaSetu logo and brand name
+- Home
+- Explore Lessons
+- Subjects
+- How It Works
+- About
+- Language selector
+- Student Login
+- Teacher Login
+
+### Hero section
+Headline: “Big Dreams Begin with Small Steps.”
+
+Supporting text: “Explore interactive lessons, discover new skills, and learn in your own language — online or offline.”
+
+Primary CTA: Start Learning
+
+Secondary CTA: Explore Lessons
+
+Include an attractive illustration showing Indian schoolchildren learning through books, digital devices, and interactive educational activities.
+
+### Additional homepage sections
+1. Featured learning subjects
+2. How VidyaSetu works
+3. Learning in regional languages
+4. Offline learning capabilities
+5. Interactive games and activities
+6. Teacher and classroom benefits
+7. Platform impact and accessibility
+8. A final call-to-action
+9. Footer with navigation, contact information, and privacy links
+
+Do not invent real school partnerships, user statistics, impact numbers, or government endorsements.
+
+## 6. Student Portal
+
+Build a complete student learning experience.
+
+### Student dashboard
+Display:
+- Personalized greeting
+- Selected class from Class 1 to Class 8
+- Selected learning language
+- Continue Learning card
+- Subject cards
+- Recommended lessons
+- Completed lessons
+- Quiz scores
+- Earned stars and badges
+- Learning progress
+- Downloaded offline lessons
+- Daily practice suggestions
+
+### Supported subjects
+- Mathematics
+- Environmental Studies
+- Science
+- English
+- Regional Languages
+- Social Studies for appropriate classes
+
+Allow administrators to configure subjects by class and curriculum.
+
+### Lesson library
+Implement:
+- Class selector
+- Subject filters
+- Language filters
+- Search by lesson title or topic
+- Difficulty or learning-level filters
+- Lesson cards with illustrations
+- Duration and completion indicators
+- Online and downloaded status
+- Bookmark or save-for-later functionality
+
+Only display content appropriate to the selected class.
+
+## 7. Interactive Lesson Player
+
+Create a reusable lesson player that supports multiple content types:
+
+- Text-based explanations
+- Illustrated learning cards
+- Recorded audio instructions
+- Vocabulary and pronunciation activities
+- Step-by-step worked examples
+- Picture-based questions
+- Multiple-choice questions
+- Matching activities
+- Drag-and-drop activities where accessible
+- True-or-false questions
+- Fill-in-the-blank exercises
+- Short educational stories
+- End-of-lesson quizzes
+
+Provide immediate, encouraging feedback.
+
+Correct answer: display a positive message and an explanation.
+
+Incorrect answer: provide a helpful hint and allow the student to try again.
+
+At the end of a lesson, show:
+- Score
+- Correct answers
+- Concepts to revise
+- Stars earned
+- Lesson completion status
+- Recommended next lesson
+
+Make all activities usable with touch, keyboard, and screen readers where practical.
+
+Do not award completion merely because a student opened a lesson.
+
+## 8. Multilingual Learning System
+
+Support these initial interface languages:
+- Kannada
+- Hindi
+- Telugu
+- Tamil
+- Malayalam
+- Marathi
+- Bengali
+- English
+
+Build a reusable internationalization system with translation dictionaries or structured translation resources.
+
+Requirements:
+- Language selector accessible throughout the application
+- Translate navigation, labels, instructions, and system messages
+- Use Unicode-compatible fonts and proper rendering
+- Store a user's preferred language
+- Allow lesson content to have multiple language versions
+- Preserve lesson progress when the language changes
+- Provide optional audio playback using recorded audio assets
+- Handle missing translations gracefully
+- Never replace missing translations with invented or misleading translations
+
+Use reviewed translations for educational content. The initial sample dataset may contain a small number of clearly labeled sample lessons, but do not claim that all eight classes and languages are fully covered until the content has actually been created and reviewed.
+
+## 9. Educational Games and Rewards
+
+Create a dedicated games section featuring:
+- Number puzzles
+- Counting games
+- Shape matching
+- Word matching
+- Picture identification
+- Vocabulary games
+- Environmental awareness activities
+- Memory cards
+- Simple logic puzzles
+
+Each game must have actual working interactions, scoring, instructions, and completion feedback.
+
+Implement a positive reward system with:
+- Stars
+- Achievement badges
+- Lesson completion milestones
+- Personal progress charts
+- Optional classroom challenges
+
+Avoid manipulative reward mechanics, excessive notifications, public ranking of young children, or competitive features that shame students.
+
+## 10. Teacher Portal
+
+Create a separate, authenticated teacher dashboard.
+
+### Overview
+Display:
+- Assigned classes
+- Number of enrolled students
+- Lessons assigned
+- Lesson completion summaries
+- Quiz performance
+- Common learning difficulties
+- Recent classroom activity
+- Pending content or assignment tasks
+
+### Classroom management
+Teachers should be able to:
+- View only authorized classes
+- Enroll or invite students using school-approved workflows
+- Create classroom groups
+- Assign lessons and quizzes
+- Set assignment deadlines
+- Review submitted quiz attempts
+- Identify concepts requiring revision
+- Export authorized classroom reports
+- Download resources for offline classroom teaching
+
+### Assessment and analytics
+Show:
+- Average quiz score
+- Completion rate
+- Lesson-level performance
+- Topic-level strengths and weaknesses
+- Progress over time
+
+Use meaningful charts and accessible tables. Clearly distinguish unavailable data from zero results.
+
+Do not expose one student's private results to other students.
+
+## 11. Supervised Content Management and Admin Portal
+
+Build an administrator portal for managing the educational content and platform.
+
+Interpret supervised database management as controlled content creation, teacher review, administrator approval, and secure data administration.
+
+### Content management features
+Authorized content editors and administrators can:
+- Create lessons
+- Edit lesson metadata
+- Select class, subject, and language
+- Add text, illustrations, audio, and activities
+- Add quiz questions and answer explanations
+- Preview content before publication
+- Save drafts
+- Submit lessons for review
+- Approve or reject submitted content
+- Publish approved lessons
+- Unpublish or archive outdated lessons
+- View content version history
+- Track the reviewer and publication date
+
+### Content lifecycle
+
+Draft → Submitted for Review → Approved → Published
+
+Rejected content returns to Draft with reviewer feedback.
+
+Only authorized users may approve or publish lessons. Teachers may create drafts or submit content if permitted, but cannot bypass approval controls.
+
+Use database-enforced permissions wherever possible, not just hidden buttons in the interface.
+
+### Administrative tools
+- Manage school records
+- Manage classes and enrollments
+- Manage users and roles
+- Manage subjects and language resources
+- Review published content
+- View platform activity and audit logs
+- Configure curriculum and content metadata
+
+Never allow public self-registration to grant teacher or administrator privileges.
+
+## 12. Database Design
+
+Use Supabase PostgreSQL with proper foreign keys, indexes, constraints, timestamps, and migrations.
+
+Create normalized tables for:
+
+1. `schools`
+2. `profiles`
+3. `school_memberships`
+4. `classes`
+5. `subjects`
+6. `languages`
+7. `lessons`
+8. `lesson_translations`
+9. `lesson_sections`
+10. `activities`
+11. `questions`
+12. `question_options`
+13. `content_reviews`
+14. `assignments`
+15. `assignment_students`
+16. `quiz_attempts`
+17. `quiz_answers`
+18. `lesson_progress`
+19. `achievements`
+20. `student_achievements`
+21. `bookmarks`
+22. `offline_sync_events`
+23. `audit_logs`
+
+Add further tables only where they are necessary.
+
+### Database requirements
+- Use UUID primary keys where appropriate.
+- Reference Supabase Auth users instead of storing passwords.
+- Include `created_at` and `updated_at` timestamps.
+- Add appropriate uniqueness constraints and indexes.
+- Store quiz answers and scoring information consistently.
+- Associate users with authorized schools and classes.
+- Keep content metadata separate from localized translations.
+- Store large media files in Supabase Storage and reference them from database records.
+- Do not store entire media files as database blobs.
+- Include migration scripts that can be reapplied safely in a controlled development environment.
+- Include a seed script for clearly labeled sample educational content.
+
+### Security and Row Level Security
+
+Enable and configure Row Level Security on all tables exposed through the Supabase client.
+
+Implement policies so that:
+- Students can read published lessons suitable for their authorized classes.
+- Students can read and update only their own permitted progress and quiz records.
+- Teachers can access only classes and student records for which they have explicit authorization.
+- Content editors can manage drafts and submitted content according to their role.
+- Only authorized reviewers can approve lessons.
+- Only authorized administrators can publish content or manage privileged settings.
+- Audit logs cannot be modified by ordinary users.
+- Private school and student information is not publicly accessible.
+
+Do not rely solely on frontend checks for security.
+
+Keep the Supabase service-role key and all other privileged secrets out of frontend code and version control.
+
+If privileged operations require Edge Functions, validate the user's identity, permissions, and input on the server.
+
+## 13. Backend API and Service Layer
+
+Create a clear data-access layer for:
+- Authentication
+- Profiles and memberships
+- Lesson retrieval
+- Translation retrieval
+- Quiz submission
+- Progress updates
+- Assignment management
+- Content review
+- Publishing workflows
+- Media uploads
+- Offline synchronization
+
+Use validation and consistent error handling.
+
+Avoid duplicating business logic in different pages.
+
+Never trust a score, user ID, role, publication status, or permission supplied by an untrusted client without server-side validation.
+
+Where feasible, calculate quiz results using trusted server-side logic and ensure repeated submissions cannot create duplicate rewards.
+
+Use pagination for large lists and handle network failures gracefully.
+
+## 14. Complete Offline-First Architecture
+
+Offline support is a core requirement, not an optional feature.
+
+Implement a Progressive Web App with:
+- A valid web app manifest
+- Service Worker
+- Cached application shell
+- Offline fallback page
+- Downloadable lesson packs
+- IndexedDB storage
+- Offline quiz functionality
+- Local progress storage
+- Pending synchronization queue
+- Online/offline indicators
+- Retry behavior for failed synchronization
+
+### Offline workflow
+1. While online, the user selects a lesson and downloads its content and required media.
+2. The application stores the lesson manifest, text, questions, and media references locally.
+3. When offline, downloaded lessons remain accessible.
+4. Quiz attempts and progress updates are stored locally with unique operation IDs.
+5. When the internet returns, the application synchronizes pending operations.
+6. The server validates authorization and submitted data before accepting updates.
+7. Successfully synchronized operations are marked complete.
+8. Failed operations remain retryable without losing local work.
+
+Design for duplicate delivery, interrupted connections, and synchronization conflicts.
+
+Use versioned caches, safe cache invalidation, and appropriate cache policies for authenticated data.
+
+Do not cache sensitive API responses indiscriminately.
+
+Do not claim that every lesson works offline unless its required text and media have actually been downloaded.
+
+Explain in the documentation that offline progress is initially device-specific and that cross-device synchronization requires a working authenticated backend.
+
+## 15. Accessibility and Performance
+
+The application must:
+- Follow WCAG 2.2 AA principles where practical.
+- Use semantic HTML and visible keyboard focus.
+- Include labels for forms and controls.
+- Maintain readable text and adequate contrast.
+- Avoid relying on color alone to communicate status.
+- Respect reduced-motion preferences.
+- Provide captions or text alternatives for audio and visual material.
+- Optimize images and use lazy loading where appropriate.
+- Minimize JavaScript and network requests.
+- Use pagination and caching for resource-intensive screens.
+- Remain usable on narrow screens and low-end devices.
+
+Use suitable local fallback fonts for regional scripts.
+
+## 16. Child Privacy and Security
+
+Because the application serves children, build privacy and security into the design.
+
+Requirements:
+- Collect the minimum personal information necessary.
+- Avoid unnecessary collection of birth dates, precise locations, photographs, or contact details.
+- Use teacher-managed accounts or school-approved enrollment workflows where appropriate.
+- Implement secure session handling and access controls.
+- Validate inputs and protect against common web vulnerabilities.
+- Do not expose private student data in URLs or public reports.
+- Do not include advertising trackers or unnecessary third-party analytics.
+- Use secure HTTPS deployment.
+- Create a privacy notice and a data-retention policy.
+- Provide a documented process for correcting and deleting records where applicable.
+- Ensure school authorization and applicable child-data protection requirements are reviewed before real deployment.
+
+Do not use real student data in sample seed files or development screenshots.
+
+## 17. Development and Configuration
+
+Create `.env.example` with the required variable names, such as:
+
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+
+Use only the publishable/anonymous client key in browser code and rely on correctly configured RLS for access control. Never expose service-role keys or database passwords.
+
+Provide:
+- `package.json`
+- Database migration files
+- Seed data
+- Local development instructions
+- Supabase setup instructions
+- Build and preview commands
+- Test commands
+- Deployment instructions
+- Troubleshooting guidance
+
+If credentials are missing, build and test the parts that can run locally, and clearly document which backend functionality requires configuration.
+
+Do not silently replace backend calls with fake successful responses.
+
+## 18. Testing Requirements
+
+Write tests for:
+- Language switching
+- Class and subject filters
+- Lesson retrieval
+- Quiz scoring
+- Progress persistence
+- Duplicate quiz submission handling
+- Content approval and publication rules
+- Student and teacher authorization
+- RLS access restrictions
+- Offline lesson loading
+- Offline quiz submission
+- Synchronization retries
+- Mobile navigation and responsive behavior
+
+Run the production build and available tests.
+
+Fix errors and warnings that affect functionality.
+
+Manually test the main student, teacher, and administrator workflows.
+
+Verify that the application still works after a page refresh and that downloaded lessons remain accessible offline.
+
+Document any feature that cannot be tested because external credentials or services are unavailable.
+
+## 19. Final Quality Requirements
+
+The final application must have:
+- A complete and attractive public website
+- A functional student dashboard
+- Interactive lesson and quiz experiences
+- Multiple regional-language interface options
+- Class selection for Classes 1–8
+- Teacher dashboard
+- Content review and publishing workflow
+- Secure administrator portal
+- A properly designed PostgreSQL database
+- Authentication and authorization
+- Configured RLS policies
+- Offline lesson storage and synchronization architecture
+- Responsive mobile and desktop layouts
+- Meaningful loading, error, success, and empty states
+- Documentation and deployment configuration
+- Automated tests for critical workflows
+
+Every visible button must perform a real action or clearly indicate that the feature is not yet available. Avoid dead links, fake statistics, placeholder dashboards presented as real data, and hardcoded credentials.
+
+Use sample content only where necessary, and label it clearly.
+
+## 20. Execution Instructions for Antigravity
+
+Work autonomously through the development process, following these steps:
+
+1. Inspect the existing workspace and identify existing code that should be preserved.
+2. Create a concise implementation plan and the final project architecture.
+3. Implement the frontend and responsive design.
+4. Implement the backend integration and database migrations.
+5. Configure authentication, RLS policies, and role-based workflows.
+6. Implement lessons, quizzes, teacher tools, and content review.
+7. Implement the offline-first PWA architecture.
+8. Add sample content, environment templates, and documentation.
+9. Run the build, tests, and available security checks.
+10. Fix errors and verify the major workflows.
+11. Summarize the files created, features completed, environment variables required, database setup steps, test results, and remaining blockers.
+
+Do not stop after generating a plan or creating a landing page. Continue implementing the application until the available requirements are completed or a genuine external dependency prevents further work.
+
+If an operation requires my credentials, approval, or an external account, explain exactly what is needed rather than inventing credentials or claiming success.
+
+**Final objective:** Deliver a polished, accessible, secure, multilingual, offline-capable VidyaSetu learning platform with a working frontend, backend, supervised educational content workflow, and database architecture suitable for further testing and deployment in rural government schools.
+
+The product should demonstrate how technology can make quality learning more accessible to every child, regardless of language or internet availability.

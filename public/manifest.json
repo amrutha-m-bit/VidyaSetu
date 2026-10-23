@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "VidyaSetu - Multilingual Learning",
+  "short_name": "VidyaSetu",
+  "description": "Accessible digital learning platform for rural government schools in Classes 1–8.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBFAF6",
+  "theme_color": "#176B55",
+  "icons": [
+    {
+      "src": "/icons/logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
